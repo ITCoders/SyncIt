@@ -1,12 +1,12 @@
 import os
 import webbrowser
-#from subprocess import call
+from subprocess import call
 
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
 
-HOME_DIRECTORY="G:\\"
-ROOT_FOLDER_NAME="SyncIt"
+HOME_DIRECTORY="/home/arpit/"
+ROOT_FOLDER_NAME="Downloads"
 #----------------------------------
 #function for login
 def Login():
@@ -140,27 +140,30 @@ def folder_browser(structure,id):
                     print("Inside "+folder_selected)
                     return folder_browser(struc,element['id'])
 #-----------------------------------------------------
-drive=Login()
-print("Complete Authentication Flow First")
-USERNAME=get_username(drive)
-print("Logged in as"+USERNAME)
-root_id=id_of_title(ROOT_FOLDER_NAME,'root')
-if root_id==None:
-    root_id=create_folder('root',ROOT_FOLDER_NAME)['id']
-structure=ListFolder(root_id)
-print("Your Existing File Directory")
-id_of_working_drive_folder=folder_browser(structure,root_id)
-path=HOME_DIRECTORY+ROOT_FOLDER_NAME+os.path.sep+USERNAME
-for i in browsed:
-    path=path+os.path.sep+i
-location_of_working_local_folder=path
-download(id_of_working_drive_folder,location_of_working_local_folder)
-# subprocess.check_call(['explorer', path])
-#call(["nautilus",path])
-print("Type Sign Out for sign out and sync")
-inp=input()
-if inp=="Sign Out":
-    print("Uploading")
-    upload(path,id_of_working_drive_folder)
-    print("Upload Complete")
-    webbrowser.open('accounts.google.com/logout')
+def main():
+	drive=Login()
+	print("Complete Authentication Flow First")
+	USERNAME=get_username(drive)
+	print("Logged in as"+USERNAME)
+	root_id=id_of_title(ROOT_FOLDER_NAME,'root')
+	if root_id==None:
+	    root_id=create_folder('root',ROOT_FOLDER_NAME)['id']
+	structure=ListFolder(root_id)
+	print("Your Existing File Directory")
+	id_of_working_drive_folder=folder_browser(structure,root_id)
+	path=HOME_DIRECTORY+ROOT_FOLDER_NAME+os.path.sep+USERNAME
+	for i in browsed:
+	    path=path+os.path.sep+i
+	location_of_working_local_folder=path
+	download(id_of_working_drive_folder,location_of_working_local_folder)
+	# subprocess.check_call(['explorer', path])
+	#call(["nautilus",path])
+	print("Type Sign Out for sign out and sync")
+	inp=input()
+	if inp=="Sign Out":
+	    print("Uploading")
+	    upload(path,id_of_working_drive_folder)
+	    print("Upload Complete")
+	    webbrowser.open('accounts.google.com/logout')	
+if __name__ == '__main__' :
+	main()
