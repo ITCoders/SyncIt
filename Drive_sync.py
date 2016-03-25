@@ -127,7 +127,8 @@ def folder_browser(structure,id):
         print("Enter Name of Folder You Want to Create")
         inp=input()
         newfolder=create_folder(id,inp)
-        os.makedirs(HOME_DIRECTORY+ROOT_FOLDER_NAME+os.path.sep+USERNAME)
+        if not os.path.exists(HOME_DIRECTORY+ROOT_FOLDER_NAME+os.path.sep+USERNAME):
+            os.makedirs(HOME_DIRECTORY+ROOT_FOLDER_NAME+os.path.sep+USERNAME)
         return newfolder['id']
 
     else:
