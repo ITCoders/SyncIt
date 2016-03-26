@@ -7,6 +7,7 @@ This client is for public PCs like Computer Labs in colleges where multiple user
 ##Dependencies:
 * Python 3.x
 * Pydrive (Get it [here](https://github.com/googledrive/PyDrive))
+* PyQt4
 
 ##Instructions
 * This application requires an Google-Drive API key.
