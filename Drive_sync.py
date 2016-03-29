@@ -165,6 +165,6 @@ def main():
 	    print("Uploading")
 	    upload(path,id_of_working_drive_folder)
 	    print("Upload Complete")
-	    webbrowser.open('accounts.google.com/logout')	
+	    webbrowser.open('accounts.google.com/logout')
 if __name__ == '__main__' :
 	main()
