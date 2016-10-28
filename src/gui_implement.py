@@ -1,15 +1,16 @@
-import os
-import webbrowser
 #from subprocess import call
+import os
+import sys
+
+from PyQt4 import QtGui, QtCore
+from PyQt4.QtCore import *
+from PyQt4.QtGui import *
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
-import sys
-import os
-from PyQt4 import QtGui,QtDesigner,QtCore
-from PyQt4.QtCore import * 
-from PyQt4.QtGui import *
-import subprocess
-from gui_form import Ui_SyncIt
+
+from src.gui_form import Ui_SyncIt
+
+
 class window :
 	ui = Ui_SyncIt()
 	def create(self):
@@ -79,7 +80,7 @@ class sync :
 		self.filelist = []
 		file_list = self.drive.ListFile({'q': "'%s' in parents and trashed=false" % parent}).GetList()
 		for f in file_list:
-			if f['mimeType']=='application/vnd.google-apps.folder':	
+			if f['mimeType']=='application/vnd.google-apps.folder':
 				filelist.append({"id":f['id'],"title":f['title'],"list":self.ListFolder(f['id'])})
 			else:
 				filelist.append(f['title'])
