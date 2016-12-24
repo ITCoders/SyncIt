@@ -6,12 +6,12 @@ This client is for public PCs like Computer Labs in colleges where multiple user
 
 ##Dependencies:
 * Python 3.x
-* Pydrive (Get it [here](https://github.com/googledrive/PyDrive))
+* PyDrive (Get it [here](https://github.com/googledrive/PyDrive))
 * PyQt4
 
 ##Instructions
 * This application requires an Google-Drive API key.
 * To get an API key go to [APIs Console](https://code.google.com/apis/console) and make your own project.
 * On ‘Services’ menu, turn Drive API on.
-* On ‘API Access’ menu, create OAuth2.0 client ID, select application type to be web applcation and click on 'Download JSON'
+* On ‘API Access’ menu, create OAuth2.0 client ID, select application type to be web application and click on 'Download JSON'
 * put 'client_secrets.json' with 'Drive_sync.py' to automate authentication flow. 
